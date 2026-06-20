@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Classly">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16245C"/>
+      <stop offset="0.55" stop-color="#1565C0"/>
+      <stop offset="1" stop-color="#2BB0F0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <circle cx="983.9999999999999" cy="138.6" r="113.39999999999999" fill="#6FBF3B" opacity="0.35"/>
+  <circle cx="180" cy="504" r="75.6" fill="#FFC83D" opacity="0.4"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2">
+    <rect x="360" y="214.20000000000002" width="480" height="201.6" rx="14"/>
+    <line x1="360" y1="289.8" x2="840" y2="289.8"/>
+  </g>
+  <text x="50%" y="529.1999999999999" text-anchor="middle" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="700">Classly</text>
+  <text x="50%" y="567" text-anchor="middle" fill="#ffffff" fill-opacity="0.7" font-family="Inter, system-ui, sans-serif" font-size="20">Discipline management & school operations</text>
+</svg>

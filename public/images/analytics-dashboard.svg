@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" width="720" height="520" role="img">
+
+  <defs>
+      <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="520" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#F5F9FC" stop-opacity="1"/>
+    <stop offset="1" stop-color="#EFF4FB" stop-opacity="1"/>
+  </linearGradient>
+      <linearGradient id="card1" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#1E88E5" stop-opacity="1"/>
+    <stop offset="1" stop-color="#16245C" stop-opacity="1"/>
+  </linearGradient>
+  </defs>
+  <rect width="720" height="520" fill="url(#bg4)" rx="20"/>
+  <!-- Dashboard frame -->
+  <rect x="30" y="30" width="660" height="460" rx="18" fill="#FFFFFF" filter="drop-shadow(0 8px 24px rgba(22,36,92,0.12))"/>
+  <!-- Header bar -->
+  <rect x="30" y="30" width="660" height="52" rx="18" fill="#16245C"/>
+  <rect x="30" y="64" width="660" height="18" fill="#16245C"/>
+  <circle cx="62" cy="56" r="8" fill="#FF5F57" opacity="0.8"/>
+  <circle cx="86" cy="56" r="8" fill="#FFBD2E" opacity="0.8"/>
+  <circle cx="110" cy="56" r="8" fill="#28CA41" opacity="0.8"/>
+  <rect x="200" y="48" width="200" height="16" rx="8" fill="#FFFFFF" opacity="0.1"/>
+  <!-- Stat cards row -->
+  <rect x="50" y="100" width="140" height="80" rx="12" fill="#1E88E5" opacity="0.12"/>
+  <text x="120" y="138" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="26" font-weight="800" fill="#1E88E5">247</text>
+  <text x="120" y="156" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="10" fill="#64748B">Incidents logged</text>
+  <rect x="205" y="100" width="140" height="80" rx="12" fill="#6FBF3B" opacity="0.12"/>
+  <text x="275" y="138" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="26" font-weight="800" fill="#54A025">89%</text>
+  <text x="275" y="156" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="10" fill="#64748B">Attendance</text>
+  <rect x="360" y="100" width="140" height="80" rx="12" fill="#FFC83D" opacity="0.12"/>
+  <text x="430" y="138" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="26" font-weight="800" fill="#D97706">142</text>
+  <text x="430" y="156" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="10" fill="#64748B">Merits awarded</text>
+  <rect x="515" y="100" width="140" height="80" rx="12" fill="#16245C" opacity="0.08"/>
+  <text x="585" y="138" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="26" font-weight="800" fill="#16245C">34</text>
+  <text x="585" y="156" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="10" fill="#64748B">Interventions</text>
+  <!-- Area chart -->
+  <rect x="50" y="196" width="400" height="200" rx="12" fill="#16245C" opacity="0.04"/>
+  <text x="70" y="218" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="600" fill="#16245C" opacity="0.7">Behaviour trends — Term 2</text>
+  <!-- Chart lines -->
+  <polyline points="70,370 120,340 170,350 220,310 270,295 320,280 370,260 420,255" fill="none" stroke="#1E88E5" stroke-width="2.5" stroke-linejoin="round"/>
+  <polyline points="70,380 120,375 170,365 220,360 270,345 320,330 370,318 420,310" fill="none" stroke="#6FBF3B" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6,3"/>
+  <!-- Area fill for main line -->
+  <polygon points="70,370 120,340 170,350 220,310 270,295 320,280 370,260 420,255 420,390 70,390" fill="#1E88E5" opacity="0.08"/>
+  <!-- Axis labels -->
+  <text x="70" y="408" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#64748B">Jan</text><text x="120" y="408" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#64748B">Feb</text><text x="170" y="408" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#64748B">Mar</text><text x="220" y="408" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#64748B">Apr</text><text x="270" y="408" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#64748B">May</text><text x="320" y="408" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#64748B">Jun</text><text x="370" y="408" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#64748B">Jul</text><text x="420" y="408" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#64748B">Aug</text>
+  <!-- Legend -->
+  <line x1="70" y1="420" x2="92" y2="420" stroke="#1E88E5" stroke-width="2.5"/>
+  <text x="98" y="424" font-family="Inter,system-ui,sans-serif" font-size="10" fill="#64748B">Incidents</text>
+  <line x1="160" y1="420" x2="182" y2="420" stroke="#6FBF3B" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <text x="188" y="424" font-family="Inter,system-ui,sans-serif" font-size="10" fill="#64748B">Positive</text>
+  <!-- Right panel: donut chart -->
+  <rect x="465" y="196" width="190" height="200" rx="12" fill="#16245C" opacity="0.04"/>
+  <text x="560" y="218" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="600" fill="#16245C" opacity="0.7">By Grade</text>
+  <!-- Simple donut -->
+  <circle cx="560" cy="320" r="60" fill="none" stroke="#E2E8F0" stroke-width="22"/>
+  <circle cx="560" cy="320" r="60" fill="none" stroke="#1E88E5" stroke-width="22" stroke-dasharray="150 228" stroke-dashoffset="57" stroke-linecap="round"/>
+  <circle cx="560" cy="320" r="60" fill="none" stroke="#6FBF3B" stroke-width="22" stroke-dasharray="80 228" stroke-dashoffset="-93" stroke-linecap="round"/>
+  <circle cx="560" cy="320" r="60" fill="none" stroke="#FFC83D" stroke-width="22" stroke-dasharray="50 228" stroke-dashoffset="-173" stroke-linecap="round"/>
+  <text x="560" y="316" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="800" fill="#16245C">247</text>
+  <text x="560" y="330" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#64748B">total</text>
+  <!-- Bottom row -->
+  <rect x="50" y="410" width="400" height="56" rx="10" fill="#6FBF3B" opacity="0.08"/>
+  <rect x="60" y="422" width="10" height="32" rx="3" fill="#6FBF3B" opacity="0.8"/>
+  <text x="82" y="437" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="600" fill="#16245C">Top Intervention: Parent conference</text>
+  <text x="82" y="453" font-family="Inter,system-ui,sans-serif" font-size="10" fill="#64748B">Used in 42 cases this term — 87% resolved</text>
+
+</svg>
