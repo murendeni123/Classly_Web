@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 
 // NOTE on architecture & security headers:
-// This site is a standard Next.js app on Vercel: every marketing page is still
-// statically pre-rendered (SSG), but a single Node serverless route handler
-// (app/api/contact) sends lead-form emails over SMTP. Because there is now a
-// server layer, the Content-Security-Policy is set per-request with a nonce in
-// middleware.ts (the modern, strict approach). All OTHER security headers live
-// in vercel.json, applied at the Vercel edge. See README §Security.
+// This site is a standard Next.js app on Vercel: every marketing page is
+// statically pre-rendered (SSG), and a single Node serverless route handler
+// (app/api/contact) sends lead-form emails over SMTP. Because the pages are
+// prerendered, the Content-Security-Policy is a static policy applied at the
+// Vercel edge in vercel.json (a per-request nonce cannot match prerendered
+// HTML). All security headers live in vercel.json. See README §Security.
 
 const nextConfig = {
   // Serve images as-is (no on-demand optimizer dependency). We still get
