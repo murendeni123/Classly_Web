@@ -61,6 +61,11 @@ export async function POST(request: Request) {
     secure,
     requireTLS: !secure, // force STARTTLS upgrade on 587
     auth: { user: SMTP_USER, pass: SMTP_PASS },
+    // Fail fast with a clear error instead of hanging until the function times
+    // out — important on serverless where 587/STARTTLS can stall.
+    connectionTimeout: 8000,
+    greetingTimeout: 8000,
+    socketTimeout: 8000,
   });
 
   const to = MAIL_TO || SMTP_USER;
@@ -95,8 +100,12 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({ success: true });
   } catch (err) {
-    // Log the real SMTP error server-side (never returned to the browser).
-    console.error('[contact] SMTP send failed:', err);
+    // Flatten the error into the log message so the code/reason is visible in
+    // Vercel runtime logs (never returned to the browser).
+    const e = err as { message?: string; code?: string; responseCode?: number; command?: string };
+    console.error(
+      `[contact] SMTP send failed host=${SMTP_HOST} port=${port} secure=${secure} code=${e.code ?? 'n/a'} responseCode=${e.responseCode ?? 'n/a'} command=${e.command ?? 'n/a'} message=${e.message ?? String(err)}`,
+    );
     return NextResponse.json(
       { success: false, error: 'Could not send your message. Please use WhatsApp or email below.' },
       { status: 502 },
