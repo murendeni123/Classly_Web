@@ -7,7 +7,6 @@ import {
   initialLeadValues,
   sanitiseValues,
   validate,
-  submitLead,
   buildWhatsAppLink,
   type LeadFormValues,
   type FieldErrors,
@@ -35,7 +34,6 @@ export function LeadForm({ defaultType = 'Book a Demo' }: { defaultType?: Reques
   const [values, setValues] = useState<LeadFormValues>({ ...initialLeadValues, requestType: defaultType });
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<Status>('idle');
-  const [serverError, setServerError] = useState('');
   const [submitted, setSubmitted] = useState<LeadFormValues | null>(null);
   const lastSubmit = useRef(0);
   const captchaRef = useRef<HTMLDivElement>(null);
@@ -67,7 +65,7 @@ export function LeadForm({ defaultType = 'Book a Demo' }: { defaultType?: Reques
   const set = (field: keyof LeadFormValues, value: string | boolean) =>
     setValues((v) => ({ ...v, [field]: value }));
 
-  async function onSubmit(e: React.FormEvent) {
+  function onSubmit(e: React.FormEvent) {
     e.preventDefault();
 
     // Honeypot: a real user never fills this hidden field.
@@ -82,28 +80,15 @@ export function LeadForm({ defaultType = 'Book a Demo' }: { defaultType?: Reques
     setErrors(fieldErrors);
     if (Object.keys(fieldErrors).length > 0) return;
 
-    if (captchaEnabled && !tokenRef.current) {
-      setServerError('Please complete the captcha.');
-      setStatus('error');
-      return;
-    }
-
-    setStatus('submitting');
-    setServerError('');
     lastSubmit.current = now;
 
-    const result = await submitLead(clean);
-    if (result.ok) {
-      setSubmitted(clean);
-      setStatus('success');
-    } else {
-      setServerError(result.error);
-      setStatus('error');
-      if (captchaEnabled && window.hcaptcha && widgetId.current) {
-        window.hcaptcha.reset(widgetId.current);
-        tokenRef.current = '';
-      }
-    }
+    // Open WhatsApp with the captured details pre-filled, addressed to our
+    // number — the visitor just taps send. Opened in a new tab so the site
+    // stays put. Must run synchronously in the click handler (no awaits before
+    // it) so the browser treats it as a user gesture and doesn't block it.
+    window.open(buildWhatsAppLink(clean), '_blank', 'noopener,noreferrer');
+    setSubmitted(clean);
+    setStatus('success');
   }
 
   if (status === 'success' && submitted) {
@@ -117,9 +102,9 @@ export function LeadForm({ defaultType = 'Book a Demo' }: { defaultType?: Reques
           height={96}
           className="mx-auto mb-4 h-20 w-20 object-contain"
         />
-        <h3 className="text-xl font-bold text-classly-navy">Thank you — we’ve got it.</h3>
+        <h3 className="text-xl font-bold text-classly-navy">Almost done — just tap send.</h3>
         <p className="mx-auto mt-2 max-w-md text-sm text-muted">
-          Your {submitted.requestType.toLowerCase()} request has been sent to our team. Prefer to chat now? Continue on WhatsApp and we’ll pick up from there.
+          We’ve opened WhatsApp with your {submitted.requestType.toLowerCase()} details ready to go — just press send and we’ll take it from there. If WhatsApp didn’t open, tap the button below.
         </p>
         <a
           href={buildWhatsAppLink(submitted)}
@@ -127,7 +112,7 @@ export function LeadForm({ defaultType = 'Book a Demo' }: { defaultType?: Reques
           rel="noopener noreferrer"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5"
         >
-          Continue on WhatsApp
+          Open WhatsApp
         </a>
       </div>
     );
@@ -224,28 +209,22 @@ export function LeadForm({ defaultType = 'Book a Demo' }: { defaultType?: Reques
 
         {captchaEnabled && <div ref={captchaRef} className="mt-5" />}
 
-        {status === 'error' && serverError && (
-          <p className="mt-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">{serverError}</p>
-        )}
-
         <button
           type="submit"
-          disabled={status === 'submitting'}
-          className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-classly-green px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-classly-green-deep disabled:cursor-not-allowed disabled:opacity-60"
+          className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:brightness-95"
         >
-          {status === 'submitting' ? 'Sending…' : `Send my ${values.requestType.toLowerCase()} request`}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+            <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          Send via WhatsApp
         </button>
 
-        <p className="mt-4 text-center text-xs text-muted">
-          Prefer WhatsApp? Message us on{' '}
-          <a
-            href={`https://wa.me/${settings.whatsappNumber}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-classly-blue underline underline-offset-2"
-          >
-            {settings.whatsappDisplay}
+        <p className="mt-3 text-center text-xs text-muted">
+          Tapping send opens WhatsApp with your details pre-filled — you just press send. No app? You can also email{' '}
+          <a href={`mailto:${settings.email}`} className="font-medium text-classly-blue underline underline-offset-2">
+            {settings.email}
           </a>
+          .
         </p>
       </form>
     </>
