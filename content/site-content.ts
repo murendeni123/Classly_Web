@@ -400,52 +400,93 @@ export const nav = {
 };
 
 export const privacy = {
-  updated: 'Replace before launch',
+  updated: '28 June 2026 · Version 1.0',
   intro:
-    'This privacy notice explains how Classly handles personal information collected through this website. It is a placeholder to be finalised with legal counsel before launch.',
-  // Each section renders as a heading + paragraphs.
+    'This Privacy Notice explains how Classly (Pty) Ltd (registration number K2026486374) collects, uses and protects personal information, in line with the Protection of Personal Information Act 4 of 2013 (POPIA).',
+  // Each section renders as a heading + paragraphs. Sourced from Classly’s
+  // Privacy Notice and POPIA Operator Agreement.
   sections: [
     {
-      heading: 'Who we are',
+      heading: 'Our role',
       body: [
-        'Classly provides discipline management and school operations software for South African schools. For privacy questions, contact info@classlyempowering.co.za.',
+        'For learner and school records on the platform, the school is the responsible party and Classly is the operator — we process that information on the school’s instructions to provide the platform.',
+        'For information about account holders themselves (for example, a parent’s or staff member’s own contact and login details), Classly may act as responsible party. This notice covers both.',
       ],
     },
     {
-      heading: 'Information we collect on this website',
+      heading: 'Information we collect',
       body: [
-        'When you submit a demo or quote request, we collect the details you provide: school name, contact name, role, email address, phone number and your message.',
-        'We do not use analytics cookies or third-party trackers on this marketing website by default.',
+        'Depending on your role, this may include: name and contact details; school, grade and class; login and account details; behaviour, merit, attendance, detention and intervention records; messages and notification preferences; and technical information needed to run and secure the platform.',
       ],
     },
     {
-      heading: 'How we use your information',
+      heading: 'Children’s information',
       body: [
-        'We use the information you submit solely to respond to your enquiry and to provide the demo or quote you requested. We do not sell your personal information.',
+        'The platform processes the personal information of learners, who are children. POPIA gives children’s information special protection (sections 34 and 35). We process it only on the school’s instructions and apply heightened care, including access controls and separation of each school’s data.',
       ],
     },
     {
-      heading: 'Lawful basis & consent (POPIA)',
+      heading: 'Why we process it',
       body: [
-        'We process your personal information on the basis of your consent, which you give by ticking the consent box on our forms, and to take steps at your request prior to entering an agreement.',
-        'You may withdraw consent at any time by contacting us at info@classlyempowering.co.za.',
+        'To provide the platform; to record and manage discipline, behaviour, attendance, detentions, merits and interventions; to communicate with parents and staff; to send notifications; to provide analytics to the school; to keep the platform secure; and to meet legal obligations.',
       ],
     },
     {
-      heading: 'Sharing & processors',
+      heading: 'Who we share it with',
       body: [
-        'Form submissions are delivered to us by email through a third-party form-delivery service. We share your information only as needed to respond to you and as required by law.',
+        'We share information with the relevant school, and with service providers who help us run the platform — our hosting and database providers and our email provider — under contracts that require them to protect it. We do not sell personal information.',
+      ],
+    },
+    {
+      heading: 'Processing outside South Africa',
+      body: [
+        'Some of our service providers may process information outside South Africa. Where this happens, we take the steps required by section 72 of POPIA to ensure the information receives an adequate level of protection.',
+      ],
+    },
+    {
+      heading: 'How we protect it',
+      body: [
+        'We use appropriate, reasonable technical and organisational measures, including encryption in transit, access controls, separation of each school’s data, logging and regular backups, and we develop the platform against recognised application-security standards (OWASP ASVS Level 2 and the OWASP API Security Top 10).',
+      ],
+    },
+    {
+      heading: 'How long we keep it',
+      body: [
+        'We keep personal information for as long as needed to provide the platform to the school and as required by law. When a school’s subscription ends, we make its data available for export and then delete or de-identify it, subject to backup cycles and legal requirements.',
       ],
     },
     {
       heading: 'Your rights',
       body: [
-        'Under POPIA you may request access to, correction of, or deletion of your personal information. Contact info@classlyempowering.co.za to exercise these rights.',
+        'Subject to POPIA, you may ask to access your personal information, to correct or delete it, or to object to certain processing.',
+        'For learner and school records, please direct your request to the school; we will assist the school in responding. For information where Classly is the responsible party, contact our Information Officer below.',
       ],
     },
     {
-      heading: 'Contact',
-      body: ['For any privacy concern, email info@classlyempowering.co.za.'],
+      heading: 'POPIA Operator Agreement (for schools)',
+      body: [
+        'Because Classly processes personal information on a school’s behalf, every school subscription includes a POPIA Operator Agreement — the written contract required by section 21 of POPIA, forming part of the Master Subscription Agreement.',
+        'It commits Classly to process personal information only on the school’s documented instructions; to maintain the security safeguards required by sections 19 and 21 (tenant isolation between schools, role-based access control, encryption in transit, logging and regular backups); to bind any sub-operators to equivalent obligations; to notify the school immediately of any security compromise (sections 21(2) and 22); to handle trans-border processing in line with section 72; and to return or delete the school’s data when the subscription ends.',
+        'Schools can request a copy of this agreement from the Information Officer.',
+      ],
+    },
+    {
+      heading: 'Contact us',
+      body: [
+        'Information Officer: Murendeni Kwinda. Email: info@classlyempowering.co.za. Address: 4298 Joshua Nkomo Street, Mohlakeng, Randfontein.',
+      ],
+    },
+    {
+      heading: 'Complaints to the regulator',
+      body: [
+        'If you are not satisfied, you may complain to the Information Regulator (South Africa). Website: inforegulator.org.za. POPIA complaints: POPIAComplaints@inforegulator.org.za. PAIA complaints: PAIAComplaints@inforegulator.org.za.',
+      ],
+    },
+    {
+      heading: 'Changes to this notice',
+      body: [
+        'We may update this notice from time to time. The current version and its effective date appear at the top of this page.',
+      ],
     },
   ],
 };

@@ -6,7 +6,8 @@ import { privacy } from '@/content/site-content';
 
 export const metadata: Metadata = {
   title: 'Privacy & POPIA',
-  description: 'How Classly handles personal information collected through this website, in line with POPIA.',
+  description:
+    'How Classly (Pty) Ltd collects, uses and protects personal information, in line with POPIA — including our role as operator, children’s data, security safeguards and the POPIA Operator Agreement for schools.',
   robots: { index: true, follow: true },
 };
 
